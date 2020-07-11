@@ -1,0 +1,132 @@
+---Analysis One
+----Creating list of details 
+-- CREATE VIEW analysis_one AS 
+-- SELECT
+-- 	employees.emp_no,
+-- 	employees.first_name,
+-- 	employees.last_name,
+-- 	employees.gender,
+-- 	salaries.salary
+-- FROM
+-- 	employees
+-- JOIN 
+-- 	salaries
+-- ON
+-- 	employees.emp_no = salaries.emp_no;
+
+--Analysis Two
+--List the employees that were hired in 1986
+-- CREATE VIEW analysis_two AS
+-- SELECT 
+-- 	emp_no,
+-- 	first_name,
+-- 	last_name,
+-- 	hire_date
+-- FROM 
+-- 	employees
+-- 	WHERE EXTRACT(year from hire_date) = '1986';
+
+
+--ANALYSIS 3
+--List the manager of each department with the following information: 
+--department number, department name, the manager's employee number, last name, first name, and start and end employment dates
+-- CREATE VIEW analysis_three as
+-- SELECT
+-- 	dept_manager.dept_no,
+-- 	departments.dept_name,
+-- 	dept_manager.emp_no,
+-- 	employees.last_name,
+-- 	employees.first_name,
+-- 	dept_manager.from_date,
+-- 	dept_manager.to_date
+-- FROM 
+-- 	dept_manager
+-- Join
+-- 	departments
+-- ON
+-- 	dept_manager.dept_no = departments.dept_no
+-- JOIN
+-- 	employees
+-- ON 
+-- 	dept_manager.emp_no = employees.emp_no;
+
+--Analysis 4
+--List the department of each employee with the following information: employee number, last name, first name, and department name.
+-- CREATE VIEW analysis_four AS
+-- SELECT
+-- employees.emp_no,
+-- employees.last_name,
+-- employees.first_name,
+-- departments.dept_name
+-- FROM
+-- employees
+-- JOIN
+-- dept_emp
+-- ON
+-- employees.emp_no = dept_emp.emp_no
+-- JOIN 
+-- departments
+-- ON
+-- departments.dept_no = dept_emp.dept_no
+--Analysis 5
+--List all employees whose first name is "Hercules" and last names begin with "B."
+-- CREATE VIEW analysis_five AS
+-- SELECT 
+-- 	first_name, last_name 
+-- FROM 
+-- 	employees 
+-- WHERE 
+-- 	first_name = 'Hercules' 
+-- AND 
+-- 	last_name like'B%';
+
+--Analysis 6
+--List all employees in the Sales department, including their employee number, last name, first name, and department name.
+-- CREATE VIEW analysis_six AS
+-- SELECT
+-- employees.emp_no,
+-- employees.last_name,
+-- employees.first_name,
+-- departments.dept_name
+-- FROM
+-- employees
+-- JOIN
+-- dept_emp
+-- ON
+-- employees.emp_no = dept_emp.emp_no
+-- JOIN 
+-- departments
+-- ON
+-- departments.dept_no = dept_emp.dept_no
+-- WHERE departments.dept_name = 'Sales'
+
+--Analysis 7
+--List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
+-- CREATE VIEW analysis_7 AS
+-- SELECT
+-- employees.emp_no,
+-- employees.last_name,
+-- employees.first_name,
+-- departments.dept_name
+-- FROM
+-- employees
+-- JOIN
+-- dept_emp
+-- ON
+-- employees.emp_no = dept_emp.emp_no
+-- JOIN 
+-- departments
+-- ON
+-- departments.dept_no = dept_emp.dept_no
+-- WHERE departments.dept_name IN ('Sales', 'Development')
+
+--Analysis 8
+--In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
+-- CREATE VIEW analysis_eight AS
+-- SELECT last_name, COUNT(last_name) FROM employees
+-- GROUP BY last_name
+-- ORDER BY count(last_name) desc;
+
+
+
+
